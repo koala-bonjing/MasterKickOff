@@ -7,7 +7,6 @@ import {
   IconTrophy,
   IconSparkles,
   IconGraph,
-  IconBrandGithub,
 } from '@tabler/icons-react';
 import { StatusBadge } from './StatusBadge';
 

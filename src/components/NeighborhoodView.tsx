@@ -9,18 +9,12 @@ import {
   Badge,
   Skeleton,
   Alert,
-  Group,
   Button,
-  Avatar,
   Divider,
 } from '@mantine/core';
 import {
-  IconGraph,
   IconUsers,
-  IconDisc,
-  IconArrowRight,
   IconAlertTriangle,
-  IconInfoCircle,
 } from '@tabler/icons-react';
 import { ArtistSelect } from './ArtistSelect';
 import { GraphCanvas } from './GraphCanvas';
@@ -66,32 +60,22 @@ export function NeighborhoodView({
   return (
     <div className="space-y-6">
       {/* Header */}
-      <Paper className="p-6 sm:p-8 bg-slate-900/80 border border-slate-800 rounded-2xl backdrop-blur-xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
-        <Badge
-          size="lg"
-          variant="gradient"
-          gradient={{ from: 'cyan', to: 'indigo' }}
-          leftSection={<IconGraph size={14} />}
-          className="mb-2"
-        >
-          Direct & 2-Hop Local Subgraph
-        </Badge>
+      <div className="mb-2">
         <Title order={2} className="text-2xl sm:text-3xl font-extrabold text-white">
-          Visual Neighborhood Explorer
+          Visual Graph
         </Title>
-        <Text className="text-slate-400 text-sm mt-1 max-w-2xl">
-          Inspect any musician's direct collaboration cluster in a force-directed interactive node graph.
+        <Text className="text-slate-400 text-sm mt-1">
+          Interactive force-directed view of an artist's collaboration network.
         </Text>
 
-        <div className="max-w-md mt-6">
+        <div className="max-w-md mt-4">
           <ArtistSelect
-            label="Select Center Artist to Inspect:"
+            label="Select an artist"
             value={selectedArtistId}
             onChange={setSelectedArtistId}
           />
         </div>
-      </Paper>
+      </div>
 
       {/* Loading Skeleton */}
       {isLoading && (

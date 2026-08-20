@@ -9,15 +9,10 @@ import {
   Badge,
   Skeleton,
   Alert,
-  Group,
   Button,
-  Avatar,
-  Divider,
 } from '@mantine/core';
 import {
-  IconSparkles,
   IconUsers,
-  IconArrowRight,
   IconAlertTriangle,
   IconMusic,
 } from '@tabler/icons-react';
@@ -58,32 +53,22 @@ export function RecommendationsView({
   return (
     <div className="space-y-6">
       {/* Header */}
-      <Paper className="p-6 sm:p-8 bg-slate-900/80 border border-slate-800 rounded-2xl backdrop-blur-xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
-        <Badge
-          size="lg"
-          variant="gradient"
-          gradient={{ from: 'purple', to: 'pink' }}
-          leftSection={<IconSparkles size={14} />}
-          className="mb-2"
-        >
-          2-Hop Collaborative Filtering
-        </Badge>
+      <div className="mb-2">
         <Title order={2} className="text-2xl sm:text-3xl font-extrabold text-white">
-          Collaborative Recommendations
+          Recommendations
         </Title>
-        <Text className="text-slate-400 text-sm mt-1 max-w-2xl">
-          Discover artists connected to your network through mutual collaborators who haven't directly shared a track yet.
+        <Text className="text-slate-400 text-sm mt-1">
+          Artists connected through mutual collaborators who haven't shared a track yet.
         </Text>
 
-        <div className="max-w-md mt-6">
+        <div className="max-w-md mt-4">
           <ArtistSelect
-            label="Pick an Artist to Generate Recommendations For:"
+            label="Select an artist"
             value={selectedArtistId}
             onChange={setSelectedArtistId}
           />
         </div>
-      </Paper>
+      </div>
 
       {/* Loading Skeleton */}
       {isLoading && (

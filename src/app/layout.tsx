@@ -18,7 +18,7 @@ export default function RootLayout({
       <head>
         <ColorSchemeScript defaultColorScheme="dark" />
       </head>
-      <body className="bg-graph-bg text-slate-100 antialiased selection:bg-indigo-500/30 selection:text-indigo-200">
+      <body className="bg-graph-bg text-slate-100 antialiased selection:bg-indigo-500/30 selection:text-indigo-200" style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
         <Providers>{children}</Providers>
       </body>
     </html>

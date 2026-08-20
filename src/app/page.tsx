@@ -61,14 +61,11 @@ export default function HomePage() {
       </main>
 
       {/* Footer */}
-      <footer className="py-6 border-t border-slate-800/80 bg-slate-950/60 backdrop-blur-md text-center text-xs text-slate-500">
+      <footer className="py-5 border-t border-slate-800/50 bg-slate-950/40 text-center text-xs text-slate-500">
         <Container size="xl">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
-            <p>SoundGraph &copy; 2026 &mdash; Wexa AI Take-Home Graph Platform</p>
-            <p className="text-slate-400">
-              Powered by <span className="text-indigo-400 font-semibold">CognoDB Cloud</span> &bull; openCypher &bull; Next.js 14
-            </p>
-          </div>
+          <p>
+            Built with <span className="text-indigo-400">CognoDB Cloud</span> · openCypher · Next.js 14
+          </p>
         </Container>
       </footer>
     </div>

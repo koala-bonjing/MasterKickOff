@@ -9,18 +9,13 @@ import {
   Badge,
   Skeleton,
   Alert,
-  Group,
   Button,
-  Avatar,
-  Table,
 } from '@mantine/core';
 import {
   IconTrophy,
   IconUsers,
   IconDisc,
-  IconArrowRight,
   IconAlertTriangle,
-  IconSparkles,
 } from '@tabler/icons-react';
 import { HubArtistResult } from '@/lib/queries';
 
@@ -55,24 +50,14 @@ export function HubsView({ onSelectArtist, onExplorePath }: HubsViewProps) {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <Paper className="p-6 sm:p-8 bg-slate-900/80 border border-slate-800 rounded-2xl backdrop-blur-xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
-        <Badge
-          size="lg"
-          variant="gradient"
-          gradient={{ from: 'amber', to: 'orange' }}
-          leftSection={<IconTrophy size={14} />}
-          className="mb-2"
-        >
-          Degree Centrality Aggregation
-        </Badge>
+      <div className="mb-2">
         <Title order={2} className="text-2xl sm:text-3xl font-extrabold text-white">
           Industry Super-Hubs
         </Title>
-        <Text className="text-slate-400 text-sm mt-1 max-w-2xl">
-          The most connected musicians in the graph network, ranked by total distinct direct collaborators across songs, bands, and featured credits.
+        <Text className="text-slate-400 text-sm mt-1">
+          The most connected musicians in the network, ranked by collaborator count.
         </Text>
-      </Paper>
+      </div>
 
       {isLoading && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
