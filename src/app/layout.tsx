@@ -16,9 +16,12 @@ export default function RootLayout({
   return (
     <html lang="en" data-mantine-color-scheme="dark">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
         <ColorSchemeScript defaultColorScheme="dark" />
       </head>
-      <body className="bg-graph-bg text-slate-100 antialiased selection:bg-indigo-500/30 selection:text-indigo-200" style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+      <body className="bg-graph-bg text-slate-100 antialiased selection:bg-indigo-500/30 selection:text-indigo-200">
         <Providers>{children}</Providers>
       </body>
     </html>
