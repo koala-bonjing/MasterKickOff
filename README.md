@@ -87,17 +87,17 @@ RETURN p, length(p) AS totalHops
 The graph model represents real-world music provenance. Musicians connect through the actual creative artifacts they shared:
 
 ```mermaid
-graph LR
-    Artist["(:Artist)<br/>• id (Unique)<br/>• name<br/>• genre<br/>• bio"]
-    Band["(:Band)<br/>• id (Unique)<br/>• name<br/>• formedYear"]
-    Track["(:Track)<br/>• id (Unique)<br/>• title<br/>• durationMs<br/>• releaseYear"]
-    Album["(:Album)<br/>• id (Unique)<br/>• title<br/>• releaseYear"]
+flowchart LR
+    Artist["<b>Artist</b><br/>• id (Unique)<br/>• name<br/>• genre<br/>• bio"]
+    Band["<b>Band</b><br/>• id (Unique)<br/>• name<br/>• formedYear"]
+    Track["<b>Track</b><br/>• id (Unique)<br/>• title<br/>• durationMs<br/>• releaseYear"]
+    Album["<b>Album</b><br/>• id (Unique)<br/>• title<br/>• releaseYear"]
 
-    Artist -->|:MEMBER_OF { role }| Band
-    Artist -->|:PERFORMED_ON { role }| Track
-    Band -->|:RELEASED| Album
-    Artist -->|:RELEASED| Album
-    Album -->|:CONTAINS| Track
+    Artist -->|":MEMBER_OF (role)"| Band
+    Artist -->|":PERFORMED_ON (role)"| Track
+    Band -->|":RELEASED"| Album
+    Artist -->|":RELEASED"| Album
+    Album -->|":CONTAINS"| Track
 ```
 
 ### Schema Nodes
