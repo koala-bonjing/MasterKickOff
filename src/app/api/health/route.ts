@@ -4,12 +4,17 @@ import { handleApiSuccess, handleApiError } from '@/lib/api-response';
 
 export const dynamic = 'force-dynamic';
 
+let cachedServerInfo: any = null;
+
 export async function GET(req: NextRequest) {
   const startTime = Date.now();
   try {
     const driver = getDriver();
     const config = getNeo4jConfig();
-    const serverInfo = await driver.getServerInfo();
+
+    if (!cachedServerInfo) {
+      cachedServerInfo = await driver.getServerInfo();
+    }
 
     const session = driver.session({ database: config.database });
     let countRes: any = null;
@@ -25,9 +30,9 @@ export async function GET(req: NextRequest) {
 
     return handleApiSuccess({
       status: 'connected',
-      serverAgent: serverInfo.agent,
-      protocol: `Bolt v${serverInfo.protocolVersion}`,
-      address: serverInfo.address,
+      serverAgent: cachedServerInfo.agent,
+      protocol: `Bolt v${cachedServerInfo.protocolVersion}`,
+      address: cachedServerInfo.address,
       latencyMs,
       totalArtists,
       timestamp: new Date().toISOString(),

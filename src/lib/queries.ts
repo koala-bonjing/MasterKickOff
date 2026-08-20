@@ -229,7 +229,7 @@ export async function getRecommendations(artistId: string, limit: number = 6): P
  */
 export async function getMostConnectedArtists(limit: number = 10): Promise<HubArtistResult[]> {
   const cypher = `
-    MATCH (a:Artist)-[:PERFORMED_ON|MEMBER_OF*2]-(other:Artist)
+    MATCH (a:Artist)-[:PERFORMED_ON|MEMBER_OF]-(c)-[:PERFORMED_ON|MEMBER_OF]-(other:Artist)
     WHERE a <> other
     WITH a, count(DISTINCT other) AS collaboratorCount
     OPTIONAL MATCH (a)-[:PERFORMED_ON]->(t:Track)

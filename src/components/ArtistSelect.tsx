@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Select, Group, Text, Badge, Avatar, Loader } from '@mantine/core';
+import { Select, Group, Text, Badge, Loader } from '@mantine/core';
 import { IconMicrophone } from '@tabler/icons-react';
 import { ArtistSummary } from '@/lib/queries';
 
@@ -21,17 +21,15 @@ export function ArtistSelect({
   onChange,
   excludeId,
 }: ArtistSelectProps) {
-  const [searchValue, setSearchValue] = useState('');
-
   const { data: artists = [], isLoading } = useQuery<ArtistSummary[]>({
-    queryKey: ['artists-search', searchValue],
+    queryKey: ['artists-all'],
     queryFn: async () => {
-      const res = await fetch(`/api/artists?q=${encodeURIComponent(searchValue)}&limit=50`);
+      const res = await fetch('/api/artists?limit=100');
       if (!res.ok) throw new Error('Failed to fetch artists');
       const json = await res.json();
       return json.data || [];
     },
-    staleTime: 30000,
+    staleTime: 5 * 60 * 1000, // 5 min cache
   });
 
   const selectData = artists
@@ -49,11 +47,9 @@ export function ArtistSelect({
       data={selectData}
       value={value}
       onChange={onChange}
-      searchValue={searchValue}
-      onSearchChange={setSearchValue}
       searchable
       clearable
-      nothingFoundMessage={isLoading ? 'Searching graph...' : 'No artists found in database'}
+      nothingFoundMessage={isLoading ? 'Loading artists...' : 'No artists found'}
       rightSection={isLoading ? <Loader size={16} /> : <IconMicrophone size={16} className="text-slate-400" />}
       renderOption={({ option }) => {
         const artist = artists.find((a) => a.id === option.value);
